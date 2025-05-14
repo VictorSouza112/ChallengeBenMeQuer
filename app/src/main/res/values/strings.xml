@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BenMeQuer</string>
+    <string name="login_enter">Enter as employee</string>
+    <string name="login_test">Enter as interprise</string>
+    <string name="login_register">Register</string>
+    <string name="register_login">Register</string>
+    <string name="welcome_start">Start assessment</string>
+    <string name="footer_func_dashboard">Dashboard</string>
+    <string name="footer_func_questionnaire">Questionnarire</string>
+    <string name="footer_func_emotion">Emotion</string>
+    <string name="footer_func_calendar">Calendar</string>
+    <string name="footer_empre_emotion">Emotion</string>
+    <string name="footer_empre_questionnaire">Questionnarire</string>
+    <string name="footer_empre_star">Stars</string>
+    <string name="dashboard_func_hello">Hello</string>
+    <string name="questionnaire_func_hello">Hello</string>
+    <string name="emotion_func_hello">Hello</string>
+    <string name="calendar_func_hello">Hello</string>
+    <string name="emotion_empre_hello">Hello</string>
+    <string name="questionnaire_empre_hello">Hello</string>
+    <string name="star_empre_hello">Hello</string>
+</resources>

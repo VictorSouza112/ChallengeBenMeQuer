@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BenMeQuer</string>
+    <string name="login_enter">Entrar como funcionário</string>
+    <string name="login_test">Entrar como empresa</string>
+    <string name="login_register">Cadastre-se</string>
+    <string name="register_login">Cadastre-se</string>
+    <string name="welcome_start">Começar avaliação</string>
+    <string name="footer_func_dashboard">Dashboard</string>
+    <string name="footer_func_questionnaire">Questionário</string>
+    <string name="footer_func_emotion">Emoção</string>
+    <string name="footer_func_calendar">Calendário</string>
+    <string name="footer_empre_emotion">Emoção</string>
+    <string name="footer_empre_questionnaire">Questionário</string>
+    <string name="footer_empre_star">Estrelas</string>
+    <string name="dashboard_func_hello">Olá</string>
+    <string name="questionnaire_func_hello">Olá</string>
+    <string name="emotion_func_hello">Olá</string>
+    <string name="calendar_func_hello">Olá</string>
+    <string name="emotion_empre_hello">Olá</string>
+    <string name="questionnaire_empre_hello">Olá</string>
+    <string name="star_empre_hello">Olá</string>
+</resources>
