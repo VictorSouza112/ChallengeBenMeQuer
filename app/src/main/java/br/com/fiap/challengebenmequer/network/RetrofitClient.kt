@@ -12,7 +12,7 @@ object RetrofitClient {
     // MUITO IMPORTANTE:
     // Para o Emulador Android, use "http://10.0.2.2:8080/"
     // Para Dispositivo Físico na mesma rede Wi-Fi, use "http://SEU_IP_WIFI:8080/"
-    private const val BASE_URL = "http://192.168.15.11:8080/"
+    private const val BASE_URL = "http://10.0.2.2:8080/"
 
     // Configura o interceptor de logging para OkHttp
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
