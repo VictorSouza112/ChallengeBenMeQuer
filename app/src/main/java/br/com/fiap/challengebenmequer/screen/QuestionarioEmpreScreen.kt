@@ -1,65 +1,110 @@
 package br.com.fiap.challengebenmequer.screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import br.com.fiap.challengebenmequer.R
-import br.com.fiap.challengebenmequer.component.MenuFooterEmpre
+import br.com.fiap.challengebenmequer.component.footer.MenuFooterEmpre
+import br.com.fiap.challengebenmequer.component.header.MenuHeaderEmpre
+import br.com.fiap.challengebenmequer.component.questionarioempre.AlertSignSliceDetailsPopup
+import br.com.fiap.challengebenmequer.component.questionarioempre.AlertSignsFeedbackCard
+import br.com.fiap.challengebenmequer.component.questionarioempre.WorkloadFeedbackCard
+import br.com.fiap.challengebenmequer.component.questionarioempre.WorkloadSliceDetailsPopup
+import br.com.fiap.challengebenmequer.viewmodel.CompanyDataViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QuestionarioEmpreScreen(navController: NavController) {
-    var testeState by remember { mutableStateOf("") }
+fun QuestionarioEmpreScreen(
+    navController: NavController,
+    companyViewModel: CompanyDataViewModel = viewModel()
+) {
+    val aggregatedWorkloadData by companyViewModel.aggregatedWorkloadFeedback
+    val selectedWorkloadSlice by companyViewModel.selectedWorkloadSliceForPopup
+    val aggregatedAlertSignsData by companyViewModel.aggregatedAlertSignsFeedback
+    val selectedAlertSignSlice by companyViewModel.selectedAlertSignSliceForPopup
+    val isLoading by companyViewModel.isLoading
+    val apiResponseMessage by companyViewModel.apiResponseMessage
 
+    LaunchedEffect(Unit) {
+        if (aggregatedWorkloadData == null) {
+            companyViewModel.fetchAggregatedWorkloadFeedback()
+        }
+        if (companyViewModel.aggregatedAlertSignsFeedback.value == null) { // Busca dados de Sinais de Alerta
+            companyViewModel.fetchAggregatedAlertSignsFeedback()
+        }
+    }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = colorResource(id = R.color.white)), // Fundo branco
-        contentAlignment = Alignment.Center
+            .background(color = colorResource(id = R.color.cinza)),
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth(0.9f)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize()
+                .padding(bottom = 100.dp)
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            OutlinedTextField(
-                value = testeState,
-                onValueChange = { testeState = it }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
+            MenuHeaderEmpre()
 
-            // Texto clicável
-            Text(
-                text = stringResource(id = R.string.questionnaire_empre_hello),
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.azul)
+            // Usando o Card de Feedback de Carga de Trabalho
+            WorkloadFeedbackCard(
+                allWorkloadQuestionsData = aggregatedWorkloadData,
+                isLoading = isLoading,
+                apiResponseMessage = apiResponseMessage,
+                viewModel = companyViewModel
             )
-            MenuFooterEmpre(onNavigate = {route -> navController.navigate(route)})
+
+            // Adicionando o Card de Feedback de Sinais de Alerta
+            AlertSignsFeedbackCard(
+                allAlertSignsQuestionsData = aggregatedAlertSignsData,
+                isLoading = isLoading,
+                apiResponseMessage = apiResponseMessage,
+                viewModel = companyViewModel
+            )
+
+            Spacer(modifier = Modifier.weight(1f))
+        }
+
+        Box(modifier = Modifier
+            .align(Alignment.BottomCenter)
+            .fillMaxWidth()
+        ) {
+            MenuFooterEmpre(onNavigate = { route -> navController.navigate(route) })
+        }
+
+        // O Popup é controlado aqui, na tela principal, com base no estado do ViewModel
+        selectedWorkloadSlice?.let { slice ->
+            WorkloadSliceDetailsPopup(
+                sliceData = slice,
+                onDismiss = { companyViewModel.selectWorkloadSlice(null) }
+            )
+        }
+
+        // Popup para Sinais de Alerta
+        selectedAlertSignSlice?.let { slice ->
+            // Se você criou AlertSignSliceDetailsPopup:
+            AlertSignSliceDetailsPopup(
+                sliceData = slice,
+                onDismiss = { companyViewModel.selectAlertSignSlice(null) }
+            )
         }
     }
 }

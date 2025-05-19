@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -26,7 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import br.com.fiap.challengebenmequer.R
-import br.com.fiap.challengebenmequer.component.MenuFooterFunc
+import br.com.fiap.challengebenmequer.component.footer.MenuFooterEmpre
+import br.com.fiap.challengebenmequer.component.footer.MenuFooterFunc
+import br.com.fiap.challengebenmequer.component.header.MenuHeaderFunc
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,16 +41,19 @@ fun QuestionarioFuncScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White), // Fundo branco
-        contentAlignment = Alignment.Center
+            .background(color = colorResource(id = R.color.cinza))
     ) {
+        MenuHeaderFunc(navController)
+
         Column(
             modifier = Modifier
-                .fillMaxWidth(0.9f)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(top = 78.dp, start = 20.dp, end = 20.dp)
         ) {
             OutlinedTextField(
+                modifier = Modifier
+                    .fillMaxSize(),
                 value = testeState,
                 onValueChange = { testeState = it }
             )
@@ -59,7 +66,12 @@ fun QuestionarioFuncScreen(navController: NavController) {
                 fontWeight = FontWeight.Bold,
                 color = colorResource(id = R.color.azul)
             )
-            MenuFooterFunc(onNavigate = {route -> navController.navigate(route)})
+        }
+        Box(modifier = Modifier
+            .align(Alignment.BottomCenter)
+            .fillMaxWidth()
+        ) {
+            MenuFooterFunc(onNavigate = { route -> navController.navigate(route) })
         }
     }
 }

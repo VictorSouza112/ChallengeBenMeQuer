@@ -5,6 +5,8 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
+import br.com.fiap.challengebenmequer.component.chatbot.ChatbotModalEmpre
+import br.com.fiap.challengebenmequer.component.chatbot.ChatbotModalFunc
 import br.com.fiap.challengebenmequer.screen.*
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
@@ -43,6 +45,12 @@ fun AppNavigation() {
         }
         composable(route = "dashboardfunc") {
             DashboardFuncScreen(navController)
+        }
+        composable(route = "chatbotfunc") {
+            ChatbotModalFunc(navController)
+        }
+        composable(route = "chatbotempre") {
+            ChatbotModalEmpre(navController)
         }
         composable(route = "questionariofunc") {
             QuestionarioFuncScreen(navController)

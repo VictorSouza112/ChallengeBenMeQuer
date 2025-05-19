@@ -1,65 +1,84 @@
 package br.com.fiap.challengebenmequer.screen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import br.com.fiap.challengebenmequer.R
-import br.com.fiap.challengebenmequer.component.MenuFooterEmpre
+import br.com.fiap.challengebenmequer.component.footer.MenuFooterEmpre
+import br.com.fiap.challengebenmequer.component.header.MenuHeaderEmpre
+import br.com.fiap.challengebenmequer.component.estrelaempre.ScaleDiagnosticsCard
+import br.com.fiap.challengebenmequer.viewmodel.CompanyDataViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EstrelaEmpreScreen(navController: NavController) {
-    var testeState by remember { mutableStateOf("") }
+fun EstrelaEmpreScreen(
+    navController: NavController,
+    companyViewModel: CompanyDataViewModel = viewModel()
+) {
+    val climateData by companyViewModel.aggregatedClimateDiagnostics
+    val communicationData by companyViewModel.aggregatedCommunicationDiagnostics
+    val leadershipData by companyViewModel.aggregatedLeadershipDiagnostics
 
+    val isLoading by companyViewModel.isLoading
+    val apiResponseMessage by companyViewModel.apiResponseMessage // Para mensagens de erro gerais
+
+    LaunchedEffect(Unit) {
+        if (climateData == null) companyViewModel.fetchAggregatedClimateDiagnostics()
+        if (communicationData == null) companyViewModel.fetchAggregatedCommunicationDiagnostics()
+        if (leadershipData == null) companyViewModel.fetchAggregatedLeadershipDiagnostics()
+    }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = colorResource(id = R.color.white)), // Fundo branco
-        contentAlignment = Alignment.Center
+            .background(color = colorResource(id = R.color.cinza)),
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth(0.9f)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize()
+                .padding(bottom = 100.dp)
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            OutlinedTextField(
-                value = testeState,
-                onValueChange = { testeState = it }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
+            MenuHeaderEmpre()
 
-            // Texto clicável
-            Text(
-                text = stringResource(id = R.string.star_empre_hello),
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.azul)
+            ScaleDiagnosticsCard(
+                title = "Diagnóstico de Clima",
+                diagnosticsData = climateData,
+                isLoading = isLoading && climateData == null, // Mostra loading para este card específico
+                apiResponseMessage = if (climateData == null) apiResponseMessage else null
             )
-            MenuFooterEmpre(onNavigate = {route -> navController.navigate(route)})
+
+            ScaleDiagnosticsCard(
+                title = "Comunicação",
+                diagnosticsData = communicationData,
+                isLoading = isLoading && communicationData == null,
+                apiResponseMessage = if (communicationData == null) apiResponseMessage else null
+            )
+
+            ScaleDiagnosticsCard(
+                title = "Relação com a Liderança",
+                diagnosticsData = leadershipData,
+                isLoading = isLoading && leadershipData == null,
+                apiResponseMessage = if (leadershipData == null) apiResponseMessage else null
+            )
+
+            Spacer(modifier = Modifier.weight(1f)) // Empurra o footer para baixo
+        }
+
+        Box(modifier = Modifier
+            .align(Alignment.BottomCenter)
+            .fillMaxWidth()
+        ) {
+            MenuFooterEmpre(onNavigate = { route -> navController.navigate(route) })
         }
     }
 }

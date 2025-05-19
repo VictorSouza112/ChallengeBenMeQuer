@@ -12,9 +12,170 @@
     <string name="footer_empre_emotion">Emoção</string>
     <string name="footer_empre_questionnaire">Questionário</string>
     <string name="footer_empre_star">Estrelas</string>
-    <string name="dashboard_func_hello">Olá</string>
+
+    <string name="chatbot_empre_ben">Olá! Eu sou o Ben e estou aqui para ajudar a gerar insights valiosos sobre os dados dos seus colaboradores. Vamos começar?</string>
+    <string name="chatbot_empre_anxiety">Ansiedade</string>
+    <string name="chatbot_empre_anxiety_response">Foi identificado que 12 colaboradores apresentam, de maneira aguda, a emoção predominante \'ansioso(a)\', o que indica sinais consistentes de ansiedade.</string>
+    <string name="chatbot_empre_depression">Depressão</string>
+    <string name="chatbot_empre_depression_response">Foi identificado que 9 colaboradores apresentam a emoção predominante \'triste\', o que pode indicar sinais consistentes de depressão.</string>
+    <string name="chatbot_empre_burnout">Burnout</string>
+    <string name="chatbot_empre_burnout_response">Foi identificado que 15 colaboradores relatam cansaço extremo e falta de motivação, o que pode indicar sintomas de Burnout.</string>
+
+
+
+    <string name="chatbot_func_ben1">Olá, eu sou o Ben! Quero te ver sempre bem!</string>
+    <string name="chatbot_func_ben2">Vamos conversar um pouco?</string>
+
+    <!-- TELA: chatbot_func_tree -->
+    <string name="chatbot_func_tree_root_text_1">Como posso ajudar</string>
+    <string name="chatbot_func_tree_root_text_2">você hoje?</string>
+
+    <string name="chatbot_func_tree_respiration_text_1">Respirar profundamente pode ajudar bastante.</string>
+    <string name="chatbot_func_tree_respiration_text_2">Inspire por 4s, segure por 4s, expire por 6s. Repita 3x.</string>
+
+    <string name="chatbot_func_tree_causes_text_1">Ansiedade pode vir de tarefas demais, preocupações</string>
+    <string name="chatbot_func_tree_causes_text_2">ou falta de descanso. Qual se aplica a você?</string>
+
+    <string name="chatbot_func_tree_breath_game_text_1">Claro! Inspire fundo... segure... e expire devagar.</string>
+    <string name="chatbot_func_tree_breath_game_text_2">Repita algumas vezes.</string>
+
+    <string name="chatbot_func_tree_motivational_quote_1">Lembre-se: até as noites mais longas</string>
+    <string name="chatbot_func_tree_motivational_quote_2">chegam ao fim. Você é mais forte do que pensa!</string>
+
+    <string name="chatbot_func_tree_option_retry">Fazer outra pergunta</string>
+
+    <!-- Opções do nó raiz -->
+    <string name="chatbot_func_tree_option_anxious">Estou me sentindo ansioso(a). O que posso fazer?</string>
+    <string name="chatbot_func_tree_anxious_response_1">Sinto muito que você esteja assim.</string>
+    <string name="chatbot_func_tree_anxious_response_2">Vamos tentar algumas coisas juntos?</string>
+
+    <string name="chatbot_func_tree_option_control_breathing">Quero controlar minha respiração</string>
+    <string name="chatbot_func_tree_option_understand_anxiety">Entender por que estou ansioso(a)</string>
+    <string name="chatbot_func_tree_option_distract_me">Você pode me distrair um pouco?</string>
+    <string name="chatbot_func_tree_option_breath_exercise">Quero respirar</string>
+    <string name="chatbot_func_tree_option_motivational_phrase">Ouvir frase motivadora</string>
+
+    <string name="chatbot_func_tree_distract_text_1">Posso te mostrar um exercício de respiração</string>
+    <string name="chatbot_func_tree_distract_text_2">ou dizer uma frase motivadora.</string>
+
+    <string name="chatbot_func_tree_option_unmotivated">Estou desmotivado(a) com o trabalho. Isso é normal?</string>
+    <string name="chatbot_func_tree_unmotivated_text">Sim, é comum às vezes. Mas quero entender mais.</string>
+
+    <string name="chatbot_func_tree_stuck_routine">Sinto que estou preso(a) na rotina</string>
+    <string name="chatbot_func_tree_stuck_response">Tente mudar pequenos hábitos. Comece o dia com algo que gosta!</string>
+
+    <string name="chatbot_func_tree_no_purpose">Meu trabalho não tem propósito</string>
+    <string name="chatbot_func_tree_no_purpose_response">Você já parou para pensar em tudo que já conquistou? Isso tem valor.</string>
+
+    <string name="chatbot_func_tree_mentally_tired">Estou cansado(a) mentalmente</string>
+    <string name="chatbot_func_tree_mentally_tired_response">Seu corpo te pede pausa. Levante, alongue-se e respire.</string>
+
+    <string name="chatbot_func_tree_overwhelmed">Tenho me sentido sobrecarregado(a). Isso é normal?</string>
+    <string name="chatbot_func_tree_overwhelmed_text">Você não é máquina. Se sente assim, é hora de se cuidar.</string>
+
+    <string name="chatbot_func_tree_how_to_know">Como sei se estou sobrecarregado(a)?</string>
+    <string name="chatbot_func_tree_how_to_know_response">Cansaço extremo, insônia, irritação são sinais comuns.</string>
+
+    <string name="chatbot_func_tree_relieve_stress">O que posso fazer para aliviar?</string>
+    <string name="chatbot_func_tree_relieve_stress_response">Divida tarefas, aprenda a dizer não e priorize pausas.</string>
+
+    <string name="chatbot_func_tree_talk_to">Com quem posso conversar?</string>
+    <string name="chatbot_func_tree_talk_to_response">Falar com alguém de confiança é um bom começo.</string>
+
+    <string name="chatbot_func_tree_want_to_feel_better">Quero me sentir melhor, por onde começo?</string>
+    <string name="chatbot_func_tree_feel_better_text">Ótima iniciativa! Me diga como está se sentindo agora.</string>
+
+    <string name="chatbot_func_tree_feeling_sad">Triste</string>
+    <string name="chatbot_func_tree_feeling_sad_text_1">É ok estar triste.</string>
+    <string name="chatbot_func_tree_feeling_sad_text_2">Quer distrair-se ou respirar comigo?</string>
+
+    <string name="chatbot_func_tree_feeling_anxious">Ansioso(a)</string>
+    <string name="chatbot_func_tree_feeling_anxious_response">Vamos respirar juntos. Isso costuma ajudar.</string>
+
+    <string name="chatbot_func_tree_feeling_tired">Cansado(a)</string>
+    <string name="chatbot_func_tree_feeling_tired_response">Talvez seja hora de pausar. Você merece descanso.</string>
+
+    <string name="chatbot_func_tree_feeling_unsure">Não sei ao certo</string>
+    <string name="chatbot_func_tree_feeling_unsure_response">Tudo bem. Comece com pequenos passos, estou aqui!</string>
+
+
+    <string name="dashboard_func_questionnaire">Responda o questionário</string>
+    <string name="dashboard_func_emotion">Como você está hoje?</string>
+    <string name="dashboard_func_last_week1">Na última semana</string>
+    <string name="dashboard_func_last_week2">você se sentiu:</string>
+    <string-array name="days_top">
+        <item>DOM</item>
+        <item>SEG</item>
+        <item>TER</item>
+        <item>QUA</item>
+    </string-array>
+
+    <string-array name="days_bottom">
+        <item>QUI</item>
+        <item>SEX</item>
+        <item>SAB</item>
+    </string-array>
+    <string name="dashboard_func_calendar_filter_week">Semana 1 ▾</string>
+    <string name="dashboard_func_calendar_dropdown_week">Semana %1$d</string>
+    <string-array name="dashboard_func_day_chip">
+        <item>SEG</item>
+        <item>QUI</item>
+        <item>DOM</item>
+        <item>SAB</item>
+    </string-array>
+    <string name="dashboard_func_time_line">Linha do tempo</string>
+    <string-array name="dashboard_func_time_line_months">
+        <item>Janeiro</item>
+        <item>Fevereiro</item>
+        <item>Março</item>
+        <item>Abril</item>
+        <item>Maio</item>
+        <item>Junho</item>
+        <item>Julho</item>
+        <item>Agosto</item>
+        <item>Setembro</item>
+        <item>Outubro</item>
+        <item>Novembro</item>
+        <item>Dezembro</item>
+    </string-array>
+    <string-array name="dashboard_func_time_line_weeks">
+        <item>Semana 1</item>
+        <item>Semana 2</item>
+        <item>Semana 3</item>
+        <item>Semana 4</item>
+    </string-array>
+    <string name="dashboard_func_calendar_week_x">Semana X</string>
+
+
     <string name="questionnaire_func_hello">Olá</string>
-    <string name="emotion_func_hello">Olá</string>
+
+    <!-- TELA: emotion_func -->
+    <string name="emotion_func_title_emotion">Escolha sua emoção de hoje: *</string>
+    <string name="emotion_func_title_feeling">Como você se sente hoje? *</string>
+    <string name="emotion_func_dropdown_placeholder">Selecione...             V</string>
+    <string name="emotion_func_title_day_description">Escreva sobre seu dia:</string>
+    <string name="emotion_func_placeholder_message">Escreva uma mensagem...</string>
+    <string name="emotion_func_button_back">Voltar</string>
+    <string name="emotion_func_button_send">Enviar</string>
+
+    <string-array name="emotion_func_emotions">
+        <item>Alegre</item>
+        <item>Triste</item>
+        <item>Bravo</item>
+        <item>Ansioso</item>
+        <item>Cansado</item>
+        <item>Medo</item>
+    </string-array>
+
+    <string-array name="emotion_func_feelings">
+        <item>Motivado</item>
+        <item>Cansado</item>
+        <item>Preocupado</item>
+        <item>Estressado</item>
+        <item>Animado</item>
+        <item>Satisfeito</item>
+    </string-array>
+
     <string name="calendar_func_hello">Olá</string>
     <string name="emotion_empre_hello">Olá</string>
     <string name="questionnaire_empre_hello">Olá</string>
